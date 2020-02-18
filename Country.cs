@@ -43,5 +43,10 @@ namespace EUCalc
         {
             Country.count--;
         }
+
+        static void updatePopPercent()
+        {
+            
+        }
     }
 }
