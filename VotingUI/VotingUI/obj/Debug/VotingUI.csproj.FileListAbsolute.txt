@@ -1,0 +1,9 @@
+C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\VotingUI\VotingUI\bin\Debug\VotingUI.exe.config
+C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\VotingUI\VotingUI\bin\Debug\VotingUI.exe
+C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\VotingUI\VotingUI\bin\Debug\VotingUI.pdb
+C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\VotingUI\VotingUI\obj\Debug\VotingUI.csprojAssemblyReference.cache
+C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\VotingUI\VotingUI\obj\Debug\VotingUI.Form1.resources
+C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\VotingUI\VotingUI\obj\Debug\VotingUI.Properties.Resources.resources
+C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\VotingUI\VotingUI\obj\Debug\VotingUI.csproj.GenerateResource.cache
+C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\VotingUI\VotingUI\obj\Debug\VotingUI.exe
+C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\VotingUI\VotingUI\obj\Debug\VotingUI.pdb
