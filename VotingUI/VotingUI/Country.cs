@@ -1,6 +1,6 @@
 using System;
 
-namespace EUCalc
+namespace VotingUI
 {
     class Country
     {
