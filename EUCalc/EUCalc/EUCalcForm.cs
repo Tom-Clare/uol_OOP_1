@@ -16,20 +16,5 @@ namespace EUCalc
         {
             InitializeComponent();
         }
-
-        private void EUCalcForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblAustriaTitle_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAustriaYes_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
