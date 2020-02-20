@@ -6,11 +6,8 @@ namespace VotingUI
     {
         static int count
         {
-            get;
-            set
-            {
-                updatePopPercent();
-            }
+            get { return count; }
+            set { updatePopPercent(); }
         }
 
         private string _code { get; set; }
