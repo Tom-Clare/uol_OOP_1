@@ -12,7 +12,9 @@ namespace EUCalc
         {
 
             List<Country> countries = initCountries(); // Read config file and compile Country List
+            displayStartMessage();
             displayCountriesTable(countries); // Dispay Table
+            string input = "";
             
         }
 
@@ -34,6 +36,40 @@ namespace EUCalc
             }
 
             return countries;
+        }
+
+        private static void displayStartMessage()
+        {
+            Console.WriteLine("Type h for help and exit to exit the application.");
+        }
+
+        private static void displayHelp ()
+        {
+            string help = @"
+To change a country's vote, type the country code followed by the number or name of the new vote.
+For example:
+    DE 2
+    EE non-participating
+    CZ abstain
+
+The available votes are as follows:
+    0 non-partcipating
+    1 yes
+    2 no
+    3 abstain
+
+To change the voting rule, type rule followed by the code of the new voting rule.
+For example:
+    rule qm
+    rule u
+
+The available voting rules are as follows:
+    qm Qualified Majority
+    rqm Reinforced Qualified Majority
+    sm Simple Majority
+    u Unanimity
+            ";
+            Console.WriteLine(help);
         }
 
         // Creates table of countries and displays it to the console
