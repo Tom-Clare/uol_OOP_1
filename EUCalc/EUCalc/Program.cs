@@ -13,11 +13,43 @@ namespace EUCalc
 
             List<Country> countries = initCountries(); // Read config file and compile Country List
             displayStartMessage();
-            displayCountriesTable(countries); // Dispay Table
-            string input = "";
-            
-        }
 
+            string[] rule_options = new string[] { "qm", "rqm", "sm", "u" };
+            Dictionary<int, string> vote_options = new Dictionary<int, string>();
+            vote_options.Add(0, "non-participating");
+            vote_options.Add(1, "yes");
+            vote_options.Add(2, "no");
+            vote_options.Add(3, "abstain");
+
+            string input = "";
+            while (input != "exit") 
+            {
+                displayCountriesTable(countries); // Display Table
+                input = Console.ReadLine();
+                string[] user_input = input.Split(' ');
+                if ((user_input[0] == "rule") && (rule_options.Contains(user_input[1])))
+                {
+                    Calculations.voting_rule = user_input[1];
+                }
+                else if (int.TryParse(user_input[1])==true) 
+                {
+                    int number_option = int.Parse(user_input[1]);
+                    if ((user_input[0]) && (vote_options.ContainsKey(number_option))) 
+                    {
+
+                    }
+                    // some sort of error message
+                }
+                else if (int.TryParse(user_input[1])==false)
+                {
+                    if ((user_input[0]) && (vote_options.ContainsValue(user_input[1]))) 
+                    {
+
+                    }
+                }
+            }
+        }
+        
         private static List<Country> initCountries()  // Create an iterable contries List
         {
 
