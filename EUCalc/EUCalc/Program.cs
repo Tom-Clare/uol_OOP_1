@@ -47,6 +47,10 @@ namespace EUCalc
 
                     }
                 }
+                else if (user_input[0] == "reset")
+                {
+                    Country.SetVote() // polymorphism: setvote() without argument to reset vote
+                }
             }
         }
         
@@ -72,7 +76,7 @@ namespace EUCalc
 
         private static void displayStartMessage()
         {
-            Console.WriteLine("Type h for help and exit to exit the application.");
+            Console.WriteLine("Type 'h' for help and 'exit' to exit the application.");
         }
 
         private static void displayHelp ()
@@ -89,6 +93,13 @@ The available votes are as follows:
     1 yes
     2 no
     3 abstain
+
+To reset all votes to 'yes', enter the following command:
+    reset
+
+To switch participation between all countries and Eurozone countries only, enter either:
+    participation eurozone
+    participation all
 
 To change the voting rule, type rule followed by the code of the new voting rule.
 For example:
