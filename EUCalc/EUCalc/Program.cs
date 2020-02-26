@@ -15,11 +15,6 @@ namespace EUCalc
             displayStartMessage();
 
             string[] rule_options = new string[] { "qm", "rqm", "sm", "u" };
-            Dictionary<int, string> vote_options = new Dictionary<int, string>();
-            vote_options.Add(0, "non-participating");
-            vote_options.Add(1, "yes");
-            vote_options.Add(2, "no");
-            vote_options.Add(3, "abstain");
 
             string input = "";
             while (true) 
@@ -37,22 +32,28 @@ namespace EUCalc
                 }
                 else if (int.TryParse(user_input[1], out number_option) == true) 
                 {
-                    if ((Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) && (vote_options.ContainsKey(number_option))) 
+                    if ((Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) && (Country.vote_dict.ContainsKey(number_option))) 
                     {
-
+                        Country.setVote(countries, user_input[0], number_option);
                     }
                     // some sort of error message
                 }
                 else if (int.TryParse(user_input[1], out number_option) == false)
                 {
-                    if ((Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) && (vote_options.ContainsValue(user_input[1]))) 
+                    if (Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) 
                     {
-
+                        foreach (KeyValuePair<int, string> vote_opt in Country.vote_dict)
+                        {
+                            if (vote_opt.Value == user_input[1])
+                            {
+                                Country.setVote(countries, user_input[0], vote_opt.Key);
+                            }
+                        }
                     }
                 }
                 else if (user_input[0] == "reset")
                 {
-                    //Country.SetVote();  // polymorphism: setvote() without argument to reset vote
+                    Country.setVote(countries, "all");  // polymorphism: setvote() without argument to reset vote
                 }
                 else if ((user_input[0] == "participation") && ( (user_input[1] == "eurozone") || (user_input[1] == "all") || (user_input[1] == "none") ))
                 {
@@ -129,19 +130,19 @@ The available voting rules are as follows:
         {
             Calculations.calcPop(countries); // Update populations for display
 
-            Console.WriteLine(" ________________________________________________");
-            Console.WriteLine("| Code | Country         | Population | Eurozone |");
-            Console.WriteLine("|======|=================|============|==========|");
+            Console.WriteLine(" ____________________________________________________________");
+            Console.WriteLine("| Code | Country         | Population | Eurozone |    Vote   |");
+            Console.WriteLine("|======|=================|============|==========|===========|");
 
             // Iterate and display details
             for (int i = 0; i < countries.Count; i++)
             {
                 Console.Write("|  ");
-                Console.Write(countries[i].ToString(16, 7)); // Polymorphed ToString() method
+                Console.Write(countries[i].ToString(16, 7, 8)); // Polymorphed ToString() method
                 Console.Write(" |\n");
             }
 
-            Console.WriteLine("|______|_________________|____________|__________|");
+            Console.WriteLine("|______|_________________|____________|__________|___________|");
         }
     }
 }
