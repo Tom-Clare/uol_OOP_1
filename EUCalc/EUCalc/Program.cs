@@ -15,30 +15,22 @@ namespace EUCalc
             displayStartMessage();
 
             string[] rule_options = new string[] { "qm", "rqm", "sm", "u" };
-
             string input = "";
+
             while (true) 
             {
                 displayCountriesTable(countries); // Display Table
                 input = Console.ReadLine();
                 string[] user_input = input.Split(' ');
                 int number_option = 0;
-                if (user_input[0] == "exit") {
-                    break;
-                }
-                else if ((user_input[0] == "rule") && (rule_options.Contains(user_input[1])))
-                {
-                        Calculations.voting_rule = user_input[1];
-                }
-                else if (int.TryParse(user_input[1], out number_option) == true) 
+                if ((user_input.Length == 2) && (int.TryParse(user_input[1], out number_option) == true))
                 {
                     if ((Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) && (Country.vote_dict.ContainsKey(number_option))) 
                     {
                         Country.setVote(countries, user_input[0], number_option);
                     }
-                    // some sort of error message
                 }
-                else if (int.TryParse(user_input[1], out number_option) == false)
+                else if ((user_input.Length == 2) && (Country.vote_dict.Contains(user_input[1])))
                 {
                     if (Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) 
                     {
@@ -51,6 +43,34 @@ namespace EUCalc
                         }
                     }
                 }
+                else if (user_input[0] == "exit") {
+                    break;
+                }
+                else if (user_input[0] == "h")
+                {
+                    displayHelp();
+                    string escape = Console.ReadLine();
+                    while (true)
+                    {
+                        if (escape.Equals("e") == true)
+                        {
+                            break;
+                        }
+                    }
+                }
+                else if (user_input[0] == "results")
+                {
+                  // code me
+                }
+                else if ((user_input[0] == "rule") && (rule_options.Contains(user_input[1])))
+                {
+                    Calculations.voting_rule = user_input[1];
+                }
+                else if ((Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) && (vote_options.ContainsKey(number_option)))
+                {
+                    
+                    //Country.setVote(user_input[0], number_option);
+                }
                 else if (user_input[0] == "reset")
                 {
                     Country.setVote(countries, "all");  // polymorphism: setvote() without argument to reset vote
@@ -59,6 +79,7 @@ namespace EUCalc
                 {
                     Country.setVote(countries, user_input[1]); // polymorphism: pass with List<Country> and flag to change multiple participation values
                 }
+                
             }
         }
         
@@ -95,14 +116,14 @@ namespace EUCalc
 To change a country's vote, type the country code followed by the number or name of the new vote.
 For example:
     DE 2
-    EE non-participating
-    CZ abstain
+    EE 0
+    CZ 3
 
 The available votes are as follows:
-    0 non-partcipating
-    1 yes
-    2 no
-    3 abstain
+    0 = non-partcipating
+    1 = yes
+    2 = no
+    3 = abstain
 
 To reset all votes to 'yes', enter the following command:
     reset
@@ -121,6 +142,11 @@ The available voting rules are as follows:
     rqm Reinforced Qualified Majority
     sm Simple Majority
     u Unanimity
+
+To view if the vote will pass or not, enter the following command:
+    results
+
+To return press 'e'
             ";
             Console.WriteLine(help);
         }
