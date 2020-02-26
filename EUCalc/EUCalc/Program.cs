@@ -33,7 +33,7 @@ namespace EUCalc
                 }
                 else if ((user_input[0] == "rule") && (rule_options.Contains(user_input[1])))
                 {
-                    //Calculations.voting_rule = user_input[1];
+                        Calculations.voting_rule = user_input[1];
                 }
                 else if (int.TryParse(user_input[1], out number_option) == true) 
                 {

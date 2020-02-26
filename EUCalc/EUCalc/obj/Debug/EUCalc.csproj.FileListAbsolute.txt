@@ -24,3 +24,8 @@ C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\EUCalc\E
 C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\EUCalc\EUCalc\bin\Debug\EUCalc.exe.config
 C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\EUCalc\EUCalc\bin\Debug\EUCalc.exe
 C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\EUCalc\EUCalc\bin\Debug\EUCalc.pdb
+C:\Users\Dell\Source\Repos\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.csprojAssemblyReference.cache
+C:\Users\Dell\Source\Repos\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.Properties.Resources.resources
+C:\Users\Dell\Source\Repos\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.csproj.GenerateResource.cache
+C:\Users\Dell\Source\Repos\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.exe
+C:\Users\Dell\Source\Repos\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.pdb
