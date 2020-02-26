@@ -30,7 +30,7 @@ namespace EUCalc
                         Country.setVote(countries, user_input[0], number_option);
                     }
                 }
-                else if ((user_input.Length == 2) && (Country.vote_dict.Contains(user_input[1])))
+                else if ((user_input.Length == 2) && (Country.vote_dict.ContainsValue(user_input[1])))
                 {
                     if (Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) 
                     {
@@ -66,7 +66,7 @@ namespace EUCalc
                 {
                     Calculations.voting_rule = user_input[1];
                 }
-                else if ((Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) && (vote_options.ContainsKey(number_option)))
+                else if ((Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) && (Country.vote_dict.ContainsKey(number_option)))
                 {
                     
                     //Country.setVote(user_input[0], number_option);
