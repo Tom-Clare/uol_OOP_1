@@ -12,7 +12,6 @@ namespace EUCalc
         public int population { get; set; }
         public bool eurozone { get; set; }
         public int vote { get; set; }
-        private float _pop_percent { get; set; }
         public static List<string> all_country_codes = new List<string>();
 
         // Constructor increments total count of countries
