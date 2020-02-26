@@ -22,16 +22,6 @@ namespace EUCalc
             vote_options.Add(3, "abstain");
 
             string input = "";
-
-            for (int i = 0; i < countries.Count; i++)
-            {
-                if (i % 3 == 0)
-                {
-                    countries[i].vote = 2;
-                }
-                Console.WriteLine(countries[i].vote);
-            }
-
             while (input != "exit")
             {
                 displayCountriesTable(countries); // Display Table
