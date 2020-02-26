@@ -7,7 +7,6 @@ C:\Users\computing\Desktop\uni_OOP_1\EUCalc\EUCalc\bin\Debug\EUCalc.exe
 C:\Users\computing\Desktop\uni_OOP_1\EUCalc\EUCalc\bin\Debug\EUCalc.pdb
 C:\Users\computing\Desktop\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.exe
 C:\Users\computing\Desktop\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.pdb
-
 C:\Users\apric\Source\Repos\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.csprojAssemblyReference.cache
 C:\Users\apric\Source\Repos\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.Properties.Resources.resources
 C:\Users\apric\Source\Repos\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.csproj.GenerateResource.cache
@@ -16,7 +15,6 @@ C:\Users\apric\Source\Repos\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.pdb
 C:\Users\apric\Source\Repos\uni_OOP_1\EUCalc\EUCalc\bin\Debug\EUCalc.exe.config
 C:\Users\apric\Source\Repos\uni_OOP_1\EUCalc\EUCalc\bin\Debug\EUCalc.exe
 C:\Users\apric\Source\Repos\uni_OOP_1\EUCalc\EUCalc\bin\Debug\EUCalc.pdb
-
 C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.csprojAssemblyReference.cache
 C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.EUCalcForm.resources
 C:\Users\phill\Documents\Work\Uni\Object Oriented Programming\uni_OOP_1\EUCalc\EUCalc\obj\Debug\EUCalc.Properties.Resources.resources
