@@ -6,11 +6,8 @@ namespace EUCalc
     class Calculations
     {
         public static string voting_rule { get; set; }
-<<<<<<< Updated upstream
         public static decimal population_result { get; set; }
         public static decimal national_result { get; set; }
-=======
->>>>>>> Stashed changes
         public static int total_pop { get; set; }
 
         public static bool getResult(List<Country> countries)
