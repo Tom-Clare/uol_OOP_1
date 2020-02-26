@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace EUCalc
 {
@@ -12,6 +13,7 @@ namespace EUCalc
         public bool eurozone { get; set; }
         private int _vote { get; set; }
         private float _pop_percent { get; set; }
+        public static List<string> all_country_codes = new List<string>();
 
         // Constructor increments total count of countries
         public Country(string code, string name, int pop, bool eurozone)
