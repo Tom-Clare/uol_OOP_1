@@ -49,7 +49,7 @@ namespace EUCalc
                 }
                 else if (user_input[0] == "reset")
                 {
-                    Country.SetVote() // polymorphism: setvote() without argument to reset vote
+                    Country.SetVote(); // polymorphism: setvote() without argument to reset vote
                 }
             }
         }
