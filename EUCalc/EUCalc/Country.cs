@@ -8,9 +8,9 @@ namespace EUCalc
 
         private string _code { get; set; }
         private string _name { get; set; }
-        private int _population { get; set; }
+        public int population { get; set; }
         private bool _eurozone { get; set; }
-        private int _vote { get; set; }
+        public int vote { get; set; }
         private float _pop_percent { get; set; }
         public bool _partaking { get; set; }
 
@@ -19,32 +19,32 @@ namespace EUCalc
         {
             this._code = code;
             this._name = name;
-            this._population = pop;
+            this.population = pop;
             this._eurozone = eurozone;
 
             // 0: not participating
             // 1: yes
             // 2: no
             // 3: abstain
-            this._vote = 1; // default to yes
+            this.vote = 1; // default to yes
         }
 
         public override string ToString() //for debug
         {
             // simple message for debugging
-            return this._code + " " + this._name + " " + this._population + " " + this._eurozone;
+            return this._code + " " + this._name + " " + this.population + " " + this._eurozone;
         }
 
         public string ToString(int name_pad_length, int pop_pad_length) //for display
         {
             string name_pad = getPadding(this._name, name_pad_length); // Get spaces for padding
-            string pop_pad = getPadding(this._population.ToString(), pop_pad_length);
+            string pop_pad = getPadding(this.population.ToString(), pop_pad_length);
 
             // display token if in eurozone
             string eurozone_display = this._eurozone ? "   =+=  " : "        ";
 
             // return table line with separators and padding
-            return this._code + "  | " + this._name + name_pad + "| "  + this._population + pop_pad + "| " + eurozone_display;
+            return this._code + "  | " + this._name + name_pad + "| "  + this.population + pop_pad + "| " + eurozone_display;
         }
 
         private string getPadding(string padding_subject, int padding_length)

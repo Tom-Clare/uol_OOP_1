@@ -22,37 +22,47 @@ namespace EUCalc
             vote_options.Add(3, "abstain");
 
             string input = "";
-            while (input != "exit") 
+
+            for (int i = 0; i < countries.Count; i++)
+            {
+                if (i % 3 == 0)
+                {
+                    countries[i].vote = 2;
+                }
+                Console.WriteLine(countries[i].vote);
+            }
+
+            while (input != "exit")
             {
                 displayCountriesTable(countries); // Display Table
                 input = Console.ReadLine();
                 string[] user_input = input.Split(' ');
-                if ((user_input[0] == "rule") && (rule_options.Contains(user_input[1])))
+                int number_option = 0;
+            if ((user_input[0] == "rule") && (rule_options.Contains(user_input[1])))
+            {
+                Calculations.voting_rule = user_input[1];
+            }
+            else if (int.TryParse(user_input[1], out number_option) == true)
+            {
+                if ((user_input[0]) && (vote_options.ContainsKey(number_option)))
                 {
-                    Calculations.voting_rule = user_input[1];
-                }
-                else if (int.TryParse(user_input[1])==true) 
-                {
-                    int number_option = int.Parse(user_input[1]);
-                    if ((user_input[0]) && (vote_options.ContainsKey(number_option))) 
-                    {
 
-                    }
-                    // some sort of error message
                 }
-                else if (int.TryParse(user_input[1])==false)
+                // some sort of error message
+            }
+            else if (int.TryParse(user_input[1], out number_option) == false)
+            {
+                if ((user_input[0]) && (vote_options.ContainsValue(user_input[1])))
                 {
-                    if ((user_input[0]) && (vote_options.ContainsValue(user_input[1]))) 
-                    {
 
-                    }
-                }
-                else if (user_input[0] == "reset")
-                {
-                    Country.SetVote(); // polymorphism: setvote() without argument to reset vote
                 }
             }
+            else if (user_input[0] == "reset")
+            {
+                //Country.SetVote(); // polymorphism: setvote() without argument to reset vote
+            }
         }
+    }
         
         private static List<Country> initCountries()  // Create an iterable contries List
         {
