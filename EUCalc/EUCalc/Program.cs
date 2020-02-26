@@ -52,11 +52,11 @@ namespace EUCalc
                 }
                 else if (user_input[0] == "reset")
                 {
-                    //Country.SetVote();// polymorphism: setvote() without argument to reset vote
+                    //Country.SetVote();  // polymorphism: setvote() without argument to reset vote
                 }
-                else if ((user_input[0] == "participation") && ( (user_input[1] == "eurozone") || (user_input[1] == "all") ))
+                else if ((user_input[0] == "participation") && ( (user_input[1] == "eurozone") || (user_input[1] == "all") || (user_input[1] == "none") ))
                 {
-                   // eurozoneOnly(countries);
+                    Country.setVote(countries, user_input[1]); // polymorphism: pass with List<Country> and flag to change multiple participation values
                 }
             }
         }
@@ -127,6 +127,8 @@ The available voting rules are as follows:
         // Creates table of countries and displays it to the console
         private static void displayCountriesTable (List<Country> countries)
         {
+            Calculations.calcPop(countries); // Update populations for display
+
             Console.WriteLine(" ________________________________________________");
             Console.WriteLine("| Code | Country         | Population | Eurozone |");
             Console.WriteLine("|======|=================|============|==========|");
@@ -135,7 +137,7 @@ The available voting rules are as follows:
             for (int i = 0; i < countries.Count; i++)
             {
                 Console.Write("|  ");
-                Console.Write(countries[i].ToString(16, 11)); // Polymorphed ToString() method
+                Console.Write(countries[i].ToString(16, 7)); // Polymorphed ToString() method
                 Console.Write(" |\n");
             }
 

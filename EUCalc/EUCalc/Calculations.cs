@@ -6,8 +6,11 @@ namespace EUCalc
     class Calculations
     {
         public static string voting_rule { get; set; }
+<<<<<<< Updated upstream
         public static decimal population_result { get; set; }
         public static decimal national_result { get; set; }
+=======
+>>>>>>> Stashed changes
         public static int total_pop { get; set; }
 
         public static bool getResult(List<Country> countries)
@@ -70,16 +73,12 @@ namespace EUCalc
 
                 
             }
+
             total_pop = total_population;
-            //decimal temp = (decimal)yes_population / (decimal)total_population;
-            decimal percentage = ((decimal)yes_population / (decimal)total_population) * 100;
+            decimal percentage = ((decimal)yes_population / (decimal)total_population) * 100m;
 
             percentage = Math.Round(percentage, 2);
             return percentage;
-
-            // number that voted yes out the total number of population
-            
-
         }
 
 

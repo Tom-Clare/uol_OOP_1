@@ -37,17 +37,21 @@ namespace EUCalc
 
         public string ToString(int name_pad_length, int pop_pad_length) //for display
         {
+            decimal population_percentage = ((decimal)this.population / (decimal)Calculations.total_pop) * 100m;
+            population_percentage = Math.Round(population_percentage, 2);
+
             string name_pad = getPadding(this._name, name_pad_length); // Get spaces for padding
-            string pop_pad = getPadding(this.population.ToString(), pop_pad_length);
+            string pop_pad = getPadding(population_percentage.ToString(), pop_pad_length);
 
             // display token if in eurozone
             string eurozone_display = this.eurozone ? "   =+=  " : "        ";
 
+
             // return table line with separators and padding
-            return this._code + "  | " + this._name + name_pad + "| "  + this.population + pop_pad + "| " + eurozone_display;
+            return this._code + "  | " + this._name + name_pad + "| "  + pop_pad + population_percentage.ToString() + "%   " + "| " + eurozone_display;
         }
 
-        private string getPadding(string padding_subject, int padding_length)
+        private static string getPadding(string padding_subject, int padding_length)
         {
             int subject_length = padding_subject.Length;
             padding_length = padding_length - subject_length;
@@ -56,6 +60,33 @@ namespace EUCalc
             string spaces = String.Concat(Enumerable.Repeat(" ", padding_length)); 
 
             return spaces;
+        }
+
+        public static bool setVote (List<Country> countries, string target)
+        {
+            for (int i = 0; i < countries.Count; i++)
+            {
+                if (target == "euro")
+                {
+                    if (countries[i].eurozone == false)
+                    {
+                        countries[i].vote = 0;  // no longer participating
+                    }
+                    else if (countries[i].vote == 0) // if not currently participating
+                    {
+                        countries[i].vote = 1;  // so if they are already participating, don't change their vote
+                    }
+                }
+                else if (target == "all")
+                {
+                    countries[i].vote = 1;
+                }
+                else if (target == "none")
+                {
+                    countries[i].vote = 0;
+                }
+            }
+            return true;  // success
         }
     }
 }
