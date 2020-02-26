@@ -12,6 +12,7 @@ namespace EUCalc
         {
 
             List<Country> countries = initCountries(); // Read config file and compile Country List
+            List<string> all_country_codes = initCountries();
             displayStartMessage();
 
             string[] rule_options = new string[] { "qm", "rqm", "sm", "u" };
@@ -22,6 +23,13 @@ namespace EUCalc
             vote_options.Add(3, "abstain");
 
             string input = "";
+
+            foreach (bool value in countries.FindAll(x => x.eurozone)){
+            if (value) {
+                
+                }
+            }
+
             while (input != "exit") 
             {
                 displayCountriesTable(countries); // Display Table
@@ -34,7 +42,7 @@ namespace EUCalc
                 else if (int.TryParse(user_input[1])==true) 
                 {
                     int number_option = int.Parse(user_input[1]);
-                    if ((user_input[0]) && (vote_options.ContainsKey(number_option))) 
+                    if ((all_country_codes.Find(x => x.Equals(user_input[0]))) && (vote_options.ContainsKey(number_option))) 
                     {
 
                     }
@@ -42,14 +50,18 @@ namespace EUCalc
                 }
                 else if (int.TryParse(user_input[1])==false)
                 {
-                    if ((user_input[0]) && (vote_options.ContainsValue(user_input[1]))) 
+                    if ((all_country_codes.Find(x => x.Equals(user_input[0]))) && (vote_options.ContainsValue(user_input[1]))) 
                     {
 
                     }
                 }
                 else if (user_input[0] == "reset")
                 {
-                    Country.SetVote() // polymorphism: setvote() without argument to reset vote
+                    Country.SetVote();// polymorphism: setvote() without argument to reset vote
+                }
+                else if ((user_input[0] == "participation") && ( (user_input[1] == "eurozone") || (user_input[1] == "all") ))
+                {
+                    eurozoneOnly(countries);
                 }
             }
         }
@@ -62,11 +74,13 @@ namespace EUCalc
             StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\../../\" + config_file);
 
             List<Country> countries = new List<Country>();
+            List<string> all_country_codes = new List<string>();
             string line = "";
             bool eurozone = false;
             while ((line = file.ReadLine()) != null)  // For every line in the config file
             {
                 string[] details = line.Split(',');
+                all_country_codes.Add(details[0]);
                 eurozone = int.Parse(details[3]) != 0;  // If eurozone isn't 0, set to true
                 countries.Add(new Country(details[0], details[1], int.Parse(details[2]), eurozone));  // Add country to List
             }
