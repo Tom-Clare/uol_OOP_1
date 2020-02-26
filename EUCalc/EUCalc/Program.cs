@@ -22,19 +22,22 @@ namespace EUCalc
             vote_options.Add(3, "abstain");
 
             string input = "";
-            while (input != "exit")
+            while (true) 
             {
                 displayCountriesTable(countries); // Display Table
                 input = Console.ReadLine();
                 string[] user_input = input.Split(' ');
                 int number_option = 0;
-                if ((user_input[0] == "rule") && (rule_options.Contains(user_input[1])))
-                {
-                    Calculations.voting_rule = user_input[1];
+                if (user_input[0] == "exit") {
+                    break;
                 }
-                else if (int.TryParse(user_input[1], out number_option) == true)
+                else if ((user_input[0] == "rule") && (rule_options.Contains(user_input[1])))
                 {
-                    if ((user_input[0]) && (vote_options.ContainsKey(number_option)))
+                    //Calculations.voting_rule = user_input[1];
+                }
+                else if (int.TryParse(user_input[1], out number_option) == true) 
+                {
+                    if ((Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) && (vote_options.ContainsKey(number_option))) 
                     {
 
                     }
@@ -42,14 +45,18 @@ namespace EUCalc
                 }
                 else if (int.TryParse(user_input[1], out number_option) == false)
                 {
-                    if ((user_input[0]) && (vote_options.ContainsValue(user_input[1])))
+                    if ((Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) && (vote_options.ContainsValue(user_input[1]))) 
                     {
 
                     }
                 }
                 else if (user_input[0] == "reset")
                 {
-                    //Country.SetVote(); // polymorphism: setvote() without argument to reset vote
+                    //Country.SetVote();// polymorphism: setvote() without argument to reset vote
+                }
+                else if ((user_input[0] == "participation") && ( (user_input[1] == "eurozone") || (user_input[1] == "all") ))
+                {
+                   // eurozoneOnly(countries);
                 }
             }
         }
@@ -62,11 +69,13 @@ namespace EUCalc
             StreamReader file = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + @"\../../\" + config_file);
 
             List<Country> countries = new List<Country>();
+            List<string> all_country_codes = new List<string>();
             string line = "";
             bool eurozone = false;
             while ((line = file.ReadLine()) != null)  // For every line in the config file
             {
                 string[] details = line.Split(',');
+                Country.all_country_codes.Add(details[0]);
                 eurozone = int.Parse(details[3]) != 0;  // If eurozone isn't 0, set to true
                 countries.Add(new Country(details[0], details[1], int.Parse(details[2]), eurozone));  // Add country to List
             }
