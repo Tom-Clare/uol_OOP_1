@@ -22,7 +22,7 @@ namespace EUCalc
             bool outcome = true;
             national_result = calcMemState(countries);
             population_result = calcPop(countries);
-            if ((((rule_dict[voting_rule].Length == 2)) && (population_result < rule_dict[voting_rule][1]) || ((rule_dict[voting_rule].Length != 2) && (national_result < rule_dict[voting_rule][0]))))
+            if ((((rule_dict[voting_rule].Length == 2) && ((population_result < rule_dict[voting_rule][1]) || (national_result < rule_dict[voting_rule][0]))) || ((rule_dict[voting_rule].Length != 2) && (national_result < rule_dict[voting_rule][0]))))
             {
                 outcome = false;
             }
