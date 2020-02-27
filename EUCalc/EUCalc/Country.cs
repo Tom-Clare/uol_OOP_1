@@ -48,7 +48,7 @@ namespace EUCalc
             string display_population = "";
             if (this.vote != 0)
             {
-                decimal population_percentage = ((decimal)this.population / (decimal)Calculations1.total_pop) * 100m;
+                decimal population_percentage = ((decimal)this.population / (decimal)Calculations.total_pop) * 100m;
                 population_percentage = Math.Round(population_percentage, 2);
                 string pop_pad = getPadding(population_percentage.ToString(), pop_pad_length);
                 display_population = pop_pad + population_percentage + "%   ";
