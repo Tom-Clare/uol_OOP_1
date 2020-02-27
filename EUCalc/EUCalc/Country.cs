@@ -45,14 +45,26 @@ namespace EUCalc
 
         public string ToString(int name_pad_length, int pop_pad_length, int vote_pad_length) //for display
         {
-            decimal population_percentage = ((decimal)this.population / (decimal)Calculations.total_pop) * 100m;
-            population_percentage = Math.Round(population_percentage, 2);
+            string display_population = "";
+            if (this.vote != 0)
+            {
+                decimal population_percentage = ((decimal)this.population / (decimal)Calculations.total_pop) * 100m;
+                population_percentage = Math.Round(population_percentage, 2);
+                string pop_pad = getPadding(population_percentage.ToString(), pop_pad_length);
+                display_population = pop_pad + population_percentage + "%   ";
+            }
+            else
+            {
+                string pop_pad = getPadding(display_population, pop_pad_length);
+                display_population = pop_pad + "-   ";
+            }
+            
+
 
             string name_pad = getPadding(this._name, name_pad_length); // Get spaces for padding
             string name = this._name + name_pad;
 
-            string pop_pad = getPadding(population_percentage.ToString(), pop_pad_length);
-            string population = pop_pad + population_percentage.ToString() + "%   ";
+
 
             // display token if in eurozone
             string eurozone_display = this.eurozone ? "   =+=  " : "        ";
@@ -63,7 +75,7 @@ namespace EUCalc
 
 
             // return table line with separators and padding
-            return this._code + "  | " + name + "| "  + population + "| " + eurozone_display + " |" + vote;
+            return this._code + "  | " + name + "| "  + display_population + "| " + eurozone_display + " |" + vote;
         }
 
         private static string getPadding(string padding_subject, int padding_length)
@@ -81,7 +93,7 @@ namespace EUCalc
         {
             for (int i = 0; i < countries.Count; i++)
             {
-                if (target == "euro")
+                if (target == "eurozone")
                 {
                     if (countries[i].eurozone == false)
                     {
