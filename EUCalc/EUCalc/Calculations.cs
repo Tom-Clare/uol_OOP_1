@@ -20,9 +20,9 @@ namespace EUCalc
         public static bool getResult(List<Country> countries)
         {
             bool outcome = true;
-            population_result = calcMemState(countries);
-            national_result = calcPop(countries);
-            if ((((national_result < rule_dict[voting_rule][0]) && (rule_dict[voting_rule].Length != 2)) || ((rule_dict[voting_rule].Length == 2) && (national_result < rule_dict[voting_rule][1]))))
+            national_result = calcMemState(countries);
+            population_result = calcPop(countries);
+            if ((((rule_dict[voting_rule].Length == 2)) && (population_result < rule_dict[voting_rule][1]) || ((rule_dict[voting_rule].Length != 2) && (national_result < rule_dict[voting_rule][0]))))
             {
                 outcome = false;
             }
@@ -36,15 +36,23 @@ namespace EUCalc
             int yes_votes = 0;
             for (int i = 0; i < countries.Count; i++)
             {
-                votes++;
+                if (countries[i].vote != 0)
+                {
+                    votes++;
+                }
                 if (countries[i].vote == 1)
                 {
                     yes_votes++;
                 }
             }
 
+            if (votes == 0)
+            {
+                return 0m;
+            }
 
-            decimal percentage = (yes_votes / votes) * 100;
+            decimal percentage = ((decimal)yes_votes / (decimal)votes) * 100m;
+            percentage = Math.Round(percentage, 2);
             return percentage;
         }
 
@@ -64,6 +72,11 @@ namespace EUCalc
                 }
 
 
+            }
+
+            if (total_population == 0)
+            {
+                return 0m;
             }
 
             total_pop = total_population;

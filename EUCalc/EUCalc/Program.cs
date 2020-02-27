@@ -15,6 +15,7 @@ namespace EUCalc
             displayStartMessage();
 
             string[] rule_options = new string[] { "qm", "rqm", "sm", "u" };
+            Calculations.voting_rule = "qm";
             string input = "";
 
             while (true) 
