@@ -16,7 +16,7 @@ namespace EUCalc
             {"sm", new int[] {50} },
             {"u", new int[] {100} },
         };
-        
+
         public static bool getResult(List<Country> countries)
         {
             bool outcome = true;
@@ -43,7 +43,7 @@ namespace EUCalc
                 }
             }
 
-            
+
             decimal percentage = (yes_votes / votes) * 100;
             return percentage;
         }
@@ -63,7 +63,7 @@ namespace EUCalc
                     }
                 }
 
-                
+
             }
 
             total_pop = total_population;

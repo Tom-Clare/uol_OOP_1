@@ -64,7 +64,7 @@ namespace EUCalc
                 }
                 else if ((user_input[0] == "rule") && (rule_options.Contains(user_input[1])))
                 {
-                    Calculations.voting_rule = user_input[1];
+                    Calculations1.voting_rule = user_input[1];
                 }
                 else if (user_input[0] == "reset")
                 {
@@ -149,7 +149,7 @@ To return press 'e'
         // Creates table of countries and displays it to the console
         private static void displayCountriesTable (List<Country> countries)
         {
-            Calculations.calcPop(countries); // Update populations for display
+            Calculations1.calcPop(countries); // Update populations for display
 
             Console.WriteLine(" ____________________________________________________________");
             Console.WriteLine("| Code | Country         | Population | Eurozone |    Vote   |");
@@ -168,7 +168,7 @@ To return press 'e'
 
         private static void displayResults(List<Country> countries)
         {
-            if (Calculations.getResult(countries))
+            if (Calculations1.getResult(countries))
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Vote passed");
@@ -182,10 +182,10 @@ To return press 'e'
                 Console.ResetColor();
             }
 
-            Console.WriteLine($"Nations Percentage: {Calculations.national_result}% ({Calculations.rule_dict[Calculations.voting_rule][0]}% Needed)");
-            if (Calculations.rule_dict[Calculations.voting_rule].Length == 2)
+            Console.WriteLine($"Nations Percentage: {Calculations1.national_result}% ({Calculations1.rule_dict[Calculations1.voting_rule][0]}% Needed)");
+            if (Calculations1.rule_dict[Calculations1.voting_rule].Length == 2)
             {
-                Console.WriteLine($"Population Percentage: {Calculations.population_result}% ({Calculations.rule_dict[Calculations.voting_rule][1]}% Needed)");
+                Console.WriteLine($"Population Percentage: {Calculations1.population_result}% ({Calculations1.rule_dict[Calculations1.voting_rule][1]}% Needed)");
             }
             
             Console.WriteLine("Press any key to continue");
