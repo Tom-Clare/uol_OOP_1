@@ -9,25 +9,20 @@ namespace EUCalc
         public static decimal population_result { get; set; }
         public static decimal national_result { get; set; }
         public static int total_pop { get; set; }
-
+        public static Dictionary<string, int[]> rule_dict = new Dictionary<string, int[]>()
+        {
+            {"qm", new int[] {55, 65} },
+            {"rqm", new int[] {72, 65} },
+            {"sm", new int[] {50} },
+            {"u", new int[] {100} },
+        };
+        
         public static bool getResult(List<Country> countries)
         {
             bool outcome = true;
             population_result = calcMemState(countries);
             national_result = calcPop(countries);
-            if ((voting_rule == "qm") && ((population_result < 65) || (national_result < 55)))
-            {
-                outcome = false;
-            }
-            else if ((voting_rule == "rqm") && ((population_result < 65) || (national_result < 72)))
-            {
-                outcome = false;
-            }
-            else if ((voting_rule == "sm") && (national_result < 50))
-            {
-                outcome = false;
-            }
-            else if ((voting_rule == "sm") && (national_result != 100))
+            if ((((national_result < rule_dict[voting_rule][0]) && (rule_dict[voting_rule].Length != 2)) || ((rule_dict[voting_rule].Length == 2) && (national_result < rule_dict[voting_rule][1]))))
             {
                 outcome = false;
             }

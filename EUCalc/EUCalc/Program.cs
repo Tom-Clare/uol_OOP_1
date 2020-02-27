@@ -60,16 +60,11 @@ namespace EUCalc
                 }
                 else if (user_input[0] == "results")
                 {
-                  // code me
+                    displayResults(countries);
                 }
                 else if ((user_input[0] == "rule") && (rule_options.Contains(user_input[1])))
                 {
                     Calculations.voting_rule = user_input[1];
-                }
-                else if ((Country.all_country_codes.Find(x => x.Equals(user_input[0])) == user_input[0]) && (Country.vote_dict.ContainsKey(number_option)))
-                {
-                    
-                    //Country.setVote(user_input[0], number_option);
                 }
                 else if (user_input[0] == "reset")
                 {
@@ -169,6 +164,33 @@ To return press 'e'
             }
 
             Console.WriteLine("|______|_________________|____________|__________|___________|");
+        }
+
+        private static void displayResults(List<Country> countries)
+        {
+            if (Calculations.getResult(countries))
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Vote passed");
+                Console.ResetColor();
+                
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Vote Failed");
+                Console.ResetColor();
+            }
+
+            Console.WriteLine($"Nations Percentage: {Calculations.national_result}% ({Calculations.rule_dict[Calculations.voting_rule][0]}% Needed)");
+            if (Calculations.rule_dict[Calculations.voting_rule].Length == 2)
+            {
+                Console.WriteLine($"Population Percentage: {Calculations.population_result}% ({Calculations.rule_dict[Calculations.voting_rule][1]}% Needed)");
+            }
+            
+            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("");
+            Console.ReadKey();
         }
     }
 }
